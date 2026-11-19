@@ -7,7 +7,7 @@ namespace Api.Usuarios.Infrastructure.Contexts
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=localhost,1435;Initial Catalog=master;User ID=sa;Password=Coti@2026;Encrypt=False");
+            optionsBuilder.UseSqlServer("Data Source=sqlserver,1433;Initial Catalog=master;User ID=sa;Password=Coti@2026;Encrypt=False");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

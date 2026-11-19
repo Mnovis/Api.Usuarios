@@ -1,6 +1,18 @@
 name: api-usuarios
 
 services:
+
+  api:
+    build:
+      context: .
+      dockerfile: Api.Usuarios/Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      sqlserver:
+        condition: service_healthy
+    restart: unless-stopped
+
   sqlserver:
     image: mcr.microsoft.com/mssql/server:2022-latest
     environment:

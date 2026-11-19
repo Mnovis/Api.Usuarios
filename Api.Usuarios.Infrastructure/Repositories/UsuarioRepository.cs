@@ -1,15 +1,11 @@
 ﻿using Api.Usuarios.Domain.Entities;
 using Api.Usuarios.Infrastructure.Contexts;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Api.Usuarios.Infrastructure.Repositories
 {
     public class UsuarioRepository
     {
-        //Método para inserir um usuário no banco de dados
         public async Task InserirAsync(Usuario usuario)
         {
             using (var dataContext = new DataContext())
@@ -19,8 +15,7 @@ namespace Api.Usuarios.Infrastructure.Repositories
             }
         }
 
-        //Método para verificar no banco de dados se o email
-        //de um usuário já está cadastrado na tabela
+        // Método para verificar no Banco de Dados se o Email de um Usuário já está cadastrado.
         public async Task<bool> VerifyEmailAsync(string email)
         {
             using (var dataContext = new DataContext())
@@ -30,15 +25,17 @@ namespace Api.Usuarios.Infrastructure.Repositories
             }
         }
 
-        //Método para consultar no banco de dados 1 usuário
-        //Através do email e da senha informado
+        // Método para consultar no Banco de Dados um Usuário
+        // Através do Email e Senha
         public async Task<Usuario?> FindAsync(string email, string senha)
         {
             using (var dataContext = new DataContext())
             {
                 return await dataContext.Set<Usuario>()
-                    .FirstOrDefaultAsync(u => u.Email.Equals(email)
-                                           && u.Senha.Equals(senha));
+                    .Include( u => u.Perfil)
+                    .FirstOrDefaultAsync(u => u.Email.Equals(email) && u.Senha.Equals(senha));
+
+
             }
         }
     }

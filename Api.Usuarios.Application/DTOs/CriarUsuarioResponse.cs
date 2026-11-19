@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Api.Usuarios.Application.DTOs
+﻿namespace Api.Usuarios.Application.DTOs
 {
     public record CriarUsuarioResponse(
             string mensagem,

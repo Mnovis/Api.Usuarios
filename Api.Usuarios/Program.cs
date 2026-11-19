@@ -16,7 +16,7 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
-//Configurando a documentação do Scalar
+// Configurar a documentação do Scalar
 app.MapScalarApiReference
     (options => options.WithTheme(ScalarTheme.BluePlanet));
 

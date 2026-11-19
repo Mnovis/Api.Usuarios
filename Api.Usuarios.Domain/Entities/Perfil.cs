@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Api.Usuarios.Domain.Entities
+﻿namespace Api.Usuarios.Domain.Entities
 {
     public class Perfil
     {
